@@ -1,0 +1,151 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    height: 97.6vh;
+    /* border: 2px solid ; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(to right top,
+        #051937,
+        #004d7a,
+        #008793,
+        #00bf72,
+        #a8eb12);
+  }
+
+  .main-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+  }
+
+  .container {
+    /* border: 2px solid red; */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn1 {
+    padding: 10px 25px;
+    border-radius: 10px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+
+  .btn2 {
+    padding: 10px 25px;
+    border-radius: 10px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: green;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 1.3rem;
+  }
+</style>
+
+<body>
+  <div class="main-btn">
+    <button class="btn1">#47a7f9</button>
+    <button class="btn2">#99615d</button>
+  </div>
+  <div class="container">
+
+    <h3>click to copy code here</h3>
+    <p class="copy-div">background-image:linear-gradient(to right,rgb(91,6,210),rgb(52,188,89))</p>
+  </div>
+
+  <script>
+    let btn1 = document.querySelector(".btn1")
+    let btn2 = document.querySelector(".btn2")
+
+
+
+
+    let button1 = () => {
+      let hexValue = "0123456789abcdef"
+      let colors = "#"
+      for (let i = 0; i <= 5; i++) {
+        colors = colors + hexValue[Math.floor(Math.random() * 16)]
+      }
+      console.log(colors)
+
+      let copyDiv = document.querySelector(".copy-div")
+      copyDiv.innerHTML = `background-image:linear-gradient(to right,  ${colors} , rgb(52,188,89));`
+
+      btn1.innerHTML = colors
+
+      btn1.style.backgroundColor = "rgb(52,188,89)"
+
+      let backgroundColor = document.body
+      backgroundColor.style.backgroundImage = `linear-gradient(to right, ${colors} ,  rgb(52,188,89) )`
+    }
+
+    btn1.addEventListener('click', () => {
+      button1()
+    })
+
+    let button2 = () => {
+
+      let hexValue2 = "0123456789abcdef"
+      let colors2 = "#"
+
+      for (let j = 0; j < 6; j++) {
+        colors2 = colors2 + hexValue2[Math.trunc(Math.random() * 16)]
+      }
+      console.log(colors2)
+
+      let copyDiv = document.querySelector(".copy-div")
+      copyDiv.innerHTML = `background-image:linear-gradient(to right,rgb(91,6,210), ${colors2})`
+
+      btn2.innerHTML = colors2
+
+      btn2.style.backgroundColor = " rgb(91,6,210)"
+
+      let bodyColor = document.body
+      bodyColor.style.backgroundImage = `linear-gradient(to right, rgb(91,6,210) , ${colors2})`
+    }
+
+    btn2.addEventListener('click', () => {
+      button2()
+    })
+
+    let copyDiv = document.querySelector(".copy-div")
+
+    copyDiv.addEventListener('click', () => {
+      let userConformation = confirm("Do you want to copied code")
+      if (userConformation) {
+        navigator.clipboard.writeText(copyDiv.innerText)
+      } else {
+        alert("Not copied Code")
+      }
+    })
+
+
+  </script>
+</body>
+
+</html> 
+
+
